@@ -9,6 +9,7 @@ reviewer: 검토자
 approver: 승인자
 related_adrs: []
 related_reports: []
+related_visions: []
 ---
 
 # ADR-YYYY-NNNN (Fast Note): 제목

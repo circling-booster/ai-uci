@@ -491,7 +491,7 @@ def render_decision_index(adrs: List[Dict[str, Any]]) -> str:
             + " | ".join(
                 [
                     escape_table_cell(item.get("id", "")),
-                    f"[{escape_table_cell(item.get('title', ''))}](../../{item['path']})",
+                    f"[{escape_table_cell(item.get('title', ''))}](../{Path(item['file_rel']).as_posix()})",
                     escape_table_cell(item.get("status", "")),
                     escape_table_cell(item.get("domain", "")),
                     escape_table_cell(item.get("date", "")),
@@ -532,7 +532,7 @@ def render_report_index(reports: List[Dict[str, Any]]) -> str:
             + " | ".join(
                 [
                     escape_table_cell(item.get("id", "")),
-                    f"[{escape_table_cell(item.get('title', ''))}](../../{item['path']})",
+                    f"[{escape_table_cell(item.get('title', ''))}](../{Path(item['file_rel']).as_posix()})",
                     escape_table_cell(item.get("type", "")),
                     escape_table_cell(item.get("status", "")),
                     escape_table_cell(item.get("domain", "")),

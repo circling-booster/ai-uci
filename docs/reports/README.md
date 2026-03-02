@@ -12,7 +12,8 @@
   - 예: `RPT-2026-Q1-0001-architecture-technical-decision.md`
 - 유형: `strategic | technical | legal | product | market | risk | compliance`
 - 상태: `Draft | Reviewed | Approved`
-- 관련 ADR를 최소 1개 이상 링크.
+- `related_adrs`는 필수 메타데이터 필드이며 형식만 검증됩니다.
+- 실제 검토 추적성 강화를 위해 관련 ADR를 최소 1개 이상 링크할 것을 권장합니다(현재 스키마/검증은 빈 배열도 허용).
 - `도메인`(`business | product | compliance | architecture | legal | engineering | strategy`)과
   `유형(type)`은 독립 축으로 관리한다.
 - `by-domain/<domain>/...` 또는 `by-quarter/YYYY-Qn/...` 경로와 `domain/period`가 일치해야 한다.
@@ -49,6 +50,16 @@
 ## 검증 및 인덱스
 - `scripts/doc-governance/validate.py --check`로 메타데이터/형식/교차참조 검증
 - `scripts/doc-governance/validate.py --generate-index`로 `docs/reports/registry/reports-index.md` 재생성
+
+### 로컬 커밋 검사 (권장)
+
+`docs/reports` 경로의 변경을 커밋할 때마다 자동 검증하려면 아래를 한 번 실행하세요.
+
+```bash
+bash scripts/doc-governance/install-hooks.sh
+```
+
+검증 실패 시 커밋이 차단되고, 콘솔에 경고 메시지가 출력됩니다.
 
 ## 폴더 역할
 - `by-domain/`: 기술/법무/제품/비즈니스/전략/컴플라이언스 주제별 분류

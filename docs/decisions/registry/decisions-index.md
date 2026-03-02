@@ -4,5 +4,5 @@
 
 | ID | 제목 | 상태 | 도메인 | 작성일 | 관련 ADR/Report |
 |---|---|---|---|---|---|
-| ADR-2026-0002-tdd-driven-development | [TDD 기반 개발 원칙 채택](../../docs/decisions/architecture/ADR-2026-0002-tdd-driven-development.md) | Accepted | architecture | 2026-03-02 | ADR-2026-0001-hexagonal-architecture |
-| ADR-2026-0001-hexagonal-architecture | [헥사고날 아키텍처 전환](../../docs/decisions/architecture/ADR-2026-0001-hexagonal-architecture.md) | Accepted | architecture | 2026-03-02 | ADR-2026-0002-tdd-driven-development |
+| ADR-2026-0002-tdd-driven-development | [TDD 기반 개발 원칙 채택](../architecture/ADR-2026-0002-tdd-driven-development.md) | Accepted | architecture | 2026-03-02 | ADR-2026-0001-hexagonal-architecture |
+| ADR-2026-0001-hexagonal-architecture | [헥사고날 아키텍처 전환](../architecture/ADR-2026-0001-hexagonal-architecture.md) | Accepted | architecture | 2026-03-02 | ADR-2026-0002-tdd-driven-development |

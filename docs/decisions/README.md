@@ -12,7 +12,8 @@
   - 예: `ADR-2026-0001-hexagonal-architecture.md`
   - 파일명은 `id`와 동일해야 하며 확장자는 `.md`만 허용한다.
 - 상태: `Proposed`, `Accepted`, `Deprecated`, `Superseded`
-- 최소 1개 이상의 `docs/visions/*` 또는 `docs/reports/*`를 참조한다.
+- `related_adrs`/`related_reports`/`related_visions`는 각 추적 참조 배열입니다.
+- 최소 1개 이상 참조는 권장되며, 현재 검증은 빈 배열을 경고(WARN)로 처리합니다.
 - 동일 도메인 내에서는 ID가 오름차순 정렬되도록 관리한다.
 
 ## YAML Front Matter (필수)
@@ -55,3 +56,13 @@
 ## 검증 및 인덱스
 - `scripts/doc-governance/validate.py --check`로 메타데이터/형식/교차참조 검증
 - `scripts/doc-governance/validate.py --generate-index`로 `docs/decisions/registry/decisions-index.md` 재생성
+
+### 로컬 커밋 검사 (권장)
+
+`docs/decisions` 경로의 변경을 커밋할 때마다 자동 검증하려면 아래를 한 번 실행하세요.
+
+```bash
+bash scripts/doc-governance/install-hooks.sh
+```
+
+검증 실패 시 커밋이 차단되고, 콘솔에 경고 메시지가 출력됩니다.
