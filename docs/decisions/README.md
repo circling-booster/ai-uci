@@ -8,8 +8,9 @@
 
 ## 규칙
 - 필수 메타데이터는 `docs/decisions/metadata-schema.yaml`를 따른다.
-- 파일명 형식: `ADR-YYYY-NNNN-짧은-슬러그.md`
-  - 예: `ADR-2026-0001-local-first-아키텍처-채택.md`
+- 파일명 형식: `ADR-YYYY-NNNN-슬러그.md` (영문 소문자, 숫자, 하이픈만 허용)
+  - 예: `ADR-2026-0001-hexagonal-architecture.md`
+  - 파일명은 `id`와 동일해야 하며 확장자는 `.md`만 허용한다.
 - 상태: `Proposed`, `Accepted`, `Deprecated`, `Superseded`
 - 최소 1개 이상의 `docs/visions/*` 또는 `docs/reports/*`를 참조한다.
 - 동일 도메인 내에서는 ID가 오름차순 정렬되도록 관리한다.

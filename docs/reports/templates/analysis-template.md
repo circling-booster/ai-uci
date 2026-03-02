@@ -1,5 +1,5 @@
 ---
-id: RPT-YYYY-Q1-0001-분석-제목
+id: RPT-YYYY-Q1-0001-technical-analysis
 title: 제목
 type: technical
 status: Draft

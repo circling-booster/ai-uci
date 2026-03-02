@@ -1,5 +1,5 @@
 ---
-id: ADR-YYYY-NNNN-짧은-슬러그
+id: ADR-YYYY-NNNN-fast-note
 title: 제목
 status: Proposed
 domain: architecture

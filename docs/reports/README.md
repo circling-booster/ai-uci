@@ -7,20 +7,22 @@
 - 시간축과 주제축에서 문서를 빠르게 검색 가능하게 한다.
 
 ## 규칙
-- 파일명 형식: `RPT-YYYY-PP-NNNN-슬러그.md`
+- 파일명 형식: `RPT-YYYY-PP-NNNN-슬러그.md` (영문 소문자, 숫자, 하이픈만 허용)
   - PP: 분기(Q1~Q4) 또는 월(M01~M12) 중 하나 사용
-  - 예: `RPT-2026-Q1-0001-...` 또는 `RPT-2026-M03-0001-...`
+  - 예: `RPT-2026-Q1-0001-architecture-technical-decision.md`
 - 유형: `strategic | technical | legal | product | market | risk | compliance`
 - 상태: `Draft | Reviewed | Approved`
 - 관련 ADR를 최소 1개 이상 링크.
 - `도메인`(`business | product | compliance | architecture | legal | engineering | strategy`)과
   `유형(type)`은 독립 축으로 관리한다.
+- `by-domain/<domain>/...` 또는 `by-quarter/YYYY-Qn/...` 경로와 `domain/period`가 일치해야 한다.
+- 파일명은 `id`와 동일해야 하며, `id` 및 파일명은 ASCII 소문자 slug만 허용한다.
 
 ## YAML Front Matter (필수)
 
 모든 리포트 본문은 아래 필드를 YAML front matter로 시작해야 한다.
 
-- `id` (예: `RPT-2026-Q1-0001-슬러그`)
+- `id` (예: `RPT-2026-Q1-0001-architecture-review`)
 - `title`
 - `status`
 - `type`

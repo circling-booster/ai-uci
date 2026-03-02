@@ -1,5 +1,5 @@
 ---
-id: RPT-YYYY-Q1-0001-제목
+id: RPT-YYYY-Q1-0001-strategic-report
 title: 제목
 status: Draft
 type: strategic

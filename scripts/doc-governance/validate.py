@@ -13,9 +13,17 @@ DOC_DECISIONS = ROOT / "docs" / "decisions"
 DOC_REPORTS = ROOT / "docs" / "reports"
 
 ADR_ID_RE = re.compile(r"^ADR-\d{4}-\d{4}-.+$")
+ADR_ID_STRICT_RE = re.compile(r"^ADR-\d{4}-\d{4}-[a-z0-9-]+$")
 REPORT_ID_RE = re.compile(r"^RPT-\d{4}-(Q[1-4]|M(0[1-9]|1[0-2]))-\d{4}-.+$")
+REPORT_ID_STRICT_RE = re.compile(
+    r"^RPT-\d{4}-(Q[1-4]|M(0[1-9]|1[0-2]))-\d{4}-[a-z0-9-]+$"
+)
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 PERIOD_RE = re.compile(r"^\d{4}-(Q[1-4]|M(0[1-9]|1[0-2]))$")
+ADR_FILENAME_RE = re.compile(r"^ADR-\d{4}-\d{4}-[a-z0-9-]+\.md$")
+REPORT_FILENAME_RE = re.compile(
+    r"^RPT-\d{4}-(Q[1-4]|M(0[1-9]|1[0-2]))-\d{4}-[a-z0-9-]+\.md$"
+)
 
 ADR_STATUSES = {"Proposed", "Accepted", "Deprecated", "Superseded"}
 ADR_DOMAINS = {"architecture", "product", "legal", "platform", "operations", "deprecated"}
@@ -222,6 +230,21 @@ def validate_adr_document(
     metadata: Dict[str, Any],
     issue_list: List[Issue],
 ) -> Dict[str, Any]:
+    if not ADR_FILENAME_RE.match(path.name):
+        issue(
+            "ERROR",
+            issue_list,
+            path,
+            f"[ADR] filename must follow ASCII slug rule: {ADR_FILENAME_RE.pattern}",
+        )
+    if "id" in metadata and metadata.get("id") != path.stem:
+        issue(
+            "ERROR",
+            issue_list,
+            path,
+            f"[ADR] filename '{path.name}' must match id '{metadata.get('id')}.md'",
+        )
+
     for key in ADR_REQUIRED_FIELDS:
         if key not in metadata:
             issue("ERROR", issue_list, path, f"[ADR] missing required field '{key}'")
@@ -229,6 +252,8 @@ def validate_adr_document(
         issue("ERROR", issue_list, path, "[ADR] field 'id' must be a string")
     if "id" in metadata and not ADR_ID_RE.match(metadata["id"]):
         issue("ERROR", issue_list, path, f"[ADR] invalid id format: '{metadata['id']}'")
+    if "id" in metadata and not ADR_ID_STRICT_RE.match(metadata["id"]):
+        issue("ERROR", issue_list, path, f"[ADR] id slug must be lowercase alpha numeric and hyphen only: '{metadata['id']}'")
     if "status" in metadata and metadata["status"] not in ADR_STATUSES:
         issue("ERROR", issue_list, path, f"[ADR] invalid status: '{metadata['status']}'")
     if "date" in metadata and not DATE_RE.match(metadata["date"]):
@@ -282,6 +307,21 @@ def validate_report_document(
     metadata: Dict[str, Any],
     issue_list: List[Issue],
 ) -> Dict[str, Any]:
+    if not REPORT_FILENAME_RE.match(path.name):
+        issue(
+            "ERROR",
+            issue_list,
+            path,
+            f"[Report] filename must follow ASCII slug rule: {REPORT_FILENAME_RE.pattern}",
+        )
+    if "id" in metadata and metadata.get("id") != path.stem:
+        issue(
+            "ERROR",
+            issue_list,
+            path,
+            f"[Report] filename '{path.name}' must match id '{metadata.get('id')}.md'",
+        )
+
     for key in REPORT_REQUIRED_FIELDS:
         if key not in metadata:
             issue("ERROR", issue_list, path, f"[Report] missing required field '{key}'")
@@ -293,6 +333,13 @@ def validate_report_document(
         issue("ERROR", issue_list, path, "[Report] field 'id' must be a string")
     if "id" in metadata and not REPORT_ID_RE.match(metadata["id"]):
         issue("ERROR", issue_list, path, f"[Report] invalid id format: '{metadata['id']}'")
+    if "id" in metadata and not REPORT_ID_STRICT_RE.match(metadata["id"]):
+        issue(
+            "ERROR",
+            issue_list,
+            path,
+            f"[Report] id slug must be lowercase alpha numeric and hyphen only: '{metadata['id']}'",
+        )
     if "status" in metadata and metadata["status"] not in REPORT_STATUSES:
         issue("ERROR", issue_list, path, f"[Report] invalid status: '{metadata['status']}'")
     if "type" in metadata and metadata["type"] not in REPORT_TYPES:

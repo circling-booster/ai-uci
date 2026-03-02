@@ -1,5 +1,5 @@
 ---
-id: RPT-YYYY-Q1-0001-심층-제목
+id: RPT-YYYY-Q1-0001-deep-dive
 title: 제목
 type: strategic
 status: Draft

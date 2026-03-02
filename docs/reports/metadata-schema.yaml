@@ -4,6 +4,7 @@ description: >-
   Docs reports metadata schema for report documents.
 
 id_pattern: "^RPT-\\d{4}-(Q[1-4]|M(0[1-9]|1[0-2]))-\\d{4}-.+$"
+filename_pattern: "^RPT-\\d{4}-(Q[1-4]|M(0[1-9]|1[0-2]))-\\d{4}-[a-z0-9-]+\\.md$"
 required_fields:
   - id
   - title

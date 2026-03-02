@@ -1,5 +1,5 @@
 ---
-id: RPT-YYYY-Q1-0001-컴플라이언스-제목
+id: RPT-YYYY-Q1-0001-compliance-check
 title: 제목
 type: compliance
 status: Draft
