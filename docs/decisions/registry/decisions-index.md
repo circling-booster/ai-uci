@@ -4,8 +4,5 @@
 
 | ID | 제목 | 상태 | 도메인 | 작성일 | 관련 ADR/Report |
 |---|---|---|---|---|---|
-
-## 검색 기준(권장)
-- 상태 → 작성일(내림차순) → ID(내림차순) 순 정렬
-- 주제별: `architecture/`, `product/`, `legal/`, `platform/`, `operations/`
-- 동일 도메인 권장 규칙: ID 오름차순 유지
+| ADR-2026-0002-tdd-driven-development | [TDD 기반 개발 원칙 채택](../../docs/decisions/architecture/ADR-2026-0002-tdd-driven-development.md) | Accepted | architecture | 2026-03-02 | ADR-2026-0001-hexagonal-architecture |
+| ADR-2026-0001-hexagonal-architecture | [헥사고날 아키텍처 전환](../../docs/decisions/architecture/ADR-2026-0001-hexagonal-architecture.md) | Accepted | architecture | 2026-03-02 | ADR-2026-0002-tdd-driven-development |
