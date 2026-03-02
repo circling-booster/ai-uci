@@ -1,0 +1,53 @@
+version: 1
+document_type: report
+description: >-
+  Docs reports metadata schema for report documents.
+
+id_pattern: "^RPT-\\d{4}-(Q[1-4]|M(0[1-9]|1[0-2]))-\\d{4}-.+$"
+required_fields:
+  - id
+  - title
+  - status
+  - type
+  - date
+  - period
+  - domain
+  - owner
+  - reviewer
+  - approver
+  - related_adrs
+
+optional_fields:
+  - risk_owner
+  - tags
+
+enums:
+  status:
+    - Draft
+    - Reviewed
+    - Approved
+  type:
+    - strategic
+    - technical
+    - legal
+    - product
+    - market
+    - risk
+    - compliance
+  domain:
+    - business
+    - product
+    - compliance
+    - architecture
+    - legal
+    - engineering
+    - strategy
+date_format: "YYYY-MM-DD"
+cross_reference_rules:
+  - related_adrs: must_reference_existing_ADR_IDs
+  - related_visions: optional_if_context_needs_it
+disallowed_aliases:
+  - quarter
+path_rules:
+  - by-domain must match metadata domain
+  - by-quarter period must match metadata period

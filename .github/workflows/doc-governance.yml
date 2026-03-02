@@ -1,0 +1,29 @@
+name: docs-governance
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-doc-governance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate document metadata
+        run: python scripts/doc-governance/validate.py --check --summary
+
+      - name: Generate indices
+        run: python scripts/doc-governance/validate.py --generate-index --summary
+
+      - name: Ensure indexes are committed
+        run: |
+          git diff --exit-code -- docs/decisions/registry/decisions-index.md docs/reports/registry/reports-index.md

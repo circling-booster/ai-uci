@@ -1,0 +1,47 @@
+version: 1
+document_type: adr
+description: >-
+  Docs decisions metadata schema for ADR documents.
+
+id_pattern: "^ADR-\\d{4}-\\d{4}-.+$"
+required_fields:
+  - id
+  - title
+  - status
+  - domain
+  - date
+  - owner
+  - reviewer
+  - approver
+  - related_adrs
+  - related_reports
+  - related_visions
+
+optional_fields:
+  - supersedes
+  - superseded_by
+  - risk_owner
+  - tags
+
+enums:
+  status:
+    - Proposed
+    - Accepted
+    - Deprecated
+    - Superseded
+  domain:
+    - architecture
+    - product
+    - legal
+    - platform
+    - operations
+    - deprecated
+date_format: "YYYY-MM-DD"
+cross_reference_rules:
+  - related_adrs: must_reference_existing_ADR_IDs
+  - related_reports: must_reference_existing_Report_IDs
+  - related_visions: must_reference_existing_paths_under_docs/visions
+
+path_rules:
+  directory_must_match_domain: true
+  deprecated_records_recommended_in_deprecated_folder: true
