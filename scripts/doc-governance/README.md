@@ -10,6 +10,17 @@ python scripts/doc-governance/validate.py --generate-index
 python scripts/doc-governance/validate.py --check --generate-index --summary
 ```
 
+### 로컬 Git 훅으로 실시간 검증
+
+`docs/decisions`, `docs/reports` 경로의 파일이 커밋 스테이징될 때마다
+자동으로 `--check`를 실행하려면 아래 스크립트를 한 번 실행하세요.
+
+```bash
+bash scripts/doc-governance/install-hooks.sh
+```
+
+활성화 후에는 검증 실패 시 커밋이 중단되고, 경고 메시지가 출력됩니다.
+
 ## 설명
 
 - `--check`
